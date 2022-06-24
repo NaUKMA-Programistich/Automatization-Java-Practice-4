@@ -4,29 +4,11 @@ on:
       - 'master'
 
 jobs:
-  test:
-    name: "Run unit tests"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
-      - name: Set up JDK 1.11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'temurin'
-          java-version: '11'
-      - name: Build debug
-        run: ./gradlew assembleDebug
-      - name: Unit-test
-        run: ./gradlew testDebug
   ktlint:
-    name: "Check project by ktlint"
+    name: "Check ktlint"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
       - name: Set up JDK 1.11
         uses: actions/setup-java@v2
         with:
@@ -35,12 +17,10 @@ jobs:
       - name: ktlint
         run: ./gradlew ktlintCheck
   detekt:
-    name: "Check project by detekt"
+    name: "Check detekt"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
       - name: Set up JDK 1.11
         uses: actions/setup-java@v2
         with:
@@ -48,3 +28,17 @@ jobs:
           java-version: '11'
       - name: detekt
         run: ./gradlew detekt
+  test:
+    name: "Run tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Build debug
+        run: ./gradlew assembleDebug
+      - name: Tests
+        run: ./gradlew testDebug
