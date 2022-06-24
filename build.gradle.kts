@@ -5,7 +5,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.21.0-RC1"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
     id("maven-publish")
-    application
+    id("java-library")
 }
 
 group = "com.programistich"
@@ -25,10 +25,6 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
-}
-
-application {
-    mainClass.set("MainKt")
 }
 
 subprojects {
@@ -59,10 +55,23 @@ java {
 }
 
 publishing {
+    publications {
+        create<MavenPublication>("main") {
+            groupId = "com.programistich"
+            artifactId = "Automatization-Java-Practice-4"
+            version = "0.1"
+            from(components["kotlin"])
+        }
+    }
     repositories {
         maven {
-            name = "SimpleCD"
-            setUrl("https://maven.pkg.github.com/ORG/REPO")
+            name = "LocalRepo"
+            url = uri("$buildDir/publish")
+        }
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/NaUKMA-Programistich/Automatization-Java-Practice-4")
             credentials {
                 username = System.getenv("GH_USERNAME")
                 password = System.getenv("GH_TOKEN")
