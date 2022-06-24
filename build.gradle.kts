@@ -59,7 +59,7 @@ publishing {
         create<MavenPublication>("main") {
             groupId = "com.programistich"
             artifactId = "automatization-java-practice"
-            version = "0.1"
+            version = "0.3"
             from(components["kotlin"])
         }
     }
@@ -73,8 +73,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/NaUKMA-Programistich/Automatization-Java-Practice-4")
             credentials {
-                username = System.getenv("GH_USERNAME")
-                password = System.getenv("GH_TOKEN")
+                username = "NaUKMA-Programistich"
+                password = "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"
             }
         }
     }
