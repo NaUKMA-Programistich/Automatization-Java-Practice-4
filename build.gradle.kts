@@ -73,8 +73,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/NaUKMA-Programistich/Automatization-Java-Practice-4")
             credentials {
-                username = "Programistich"
-                password = "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"
+                username = System.getenv("GH_USERNAME")
+                password = System.getenv("GH_TOKEN")
             }
         }
     }
