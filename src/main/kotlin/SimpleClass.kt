@@ -2,9 +2,9 @@ import kotlin.random.Random
 
 class SimpleClass {
 
-    val size = 100
-
-    fun four() = 4
-
-    fun random() = List(100) { Random.nextInt(0, size) }
+    companion object {
+        const val size = 100
+        const val four = 4
+    }
+    fun random() = List(size) { Random.nextInt(0, size) }
 }

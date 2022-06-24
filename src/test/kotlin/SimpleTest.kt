@@ -14,13 +14,13 @@ class SimpleTest {
 
     @Test
     fun `Four test`() {
-        assertEquals(4, simpleClass.four())
+        assertEquals(4, SimpleClass.Companion.four)
     }
 
     @Test
     fun `Random Test`() {
         simpleClass.random().forEach {
-            assertTrue(it <= simpleClass.size)
+            assertTrue(it <= SimpleClass.Companion.size)
         }
     }
 }
