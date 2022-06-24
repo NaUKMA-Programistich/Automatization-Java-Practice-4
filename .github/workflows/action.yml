@@ -57,6 +57,7 @@ jobs:
   publish:
     name: "Publish"
     runs-on: ubuntu-latest
+    environment: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.11
