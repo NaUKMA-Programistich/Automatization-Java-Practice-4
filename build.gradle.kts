@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.0"
     id("io.gitlab.arturbosch.detekt") version "1.21.0-RC1"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
+    id("maven-publish")
     application
 }
 
@@ -50,5 +51,22 @@ subprojects {
 
     detekt {
         config = rootProject.files("detekt.yml")
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "SimpleCD"
+            setUrl("https://maven.pkg.github.com/ORG/REPO")
+            credentials {
+                username = System.getenv("GH_USERNAME")
+                password = System.getenv("GH_TOKEN")
+            }
+        }
     }
 }
