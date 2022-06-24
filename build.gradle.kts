@@ -58,7 +58,7 @@ publishing {
     publications {
         create<MavenPublication>("main") {
             groupId = "com.programistich"
-            artifactId = "Automatization-Java-Practice-4"
+            artifactId = "automatization-java-practice"
             version = "0.1"
             from(components["kotlin"])
         }
