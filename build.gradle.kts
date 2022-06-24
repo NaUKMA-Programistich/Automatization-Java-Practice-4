@@ -72,8 +72,6 @@ publishing {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/NaUKMA-Programistich/Automatization-Java-Practice-4")
-            println("Username: ${System.getenv("GH_USERNAME")}")
-            println("Token: ${System.getenv("GH_TOKEN")}")
             credentials {
                 username = System.getenv("GH_USERNAME")
                 password = System.getenv("GH_TOKEN")
